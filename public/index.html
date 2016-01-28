@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <div class="center-container" id="paper">
+    <div class="center-container" id="paper" ng-controller="tokenCtrl">
       <div class="container" id="scenario">
         <div class="row" id="first">
           <h1>IF-Computing, Make a Scenario.</h1>
@@ -31,6 +31,10 @@
               <div class="table-responsive">
                 <table class="table">
                   <thead> <!-- Table Head Questions Input -->
+                    <tr>
+                      <th>Questions</th>
+                      <th>Action</th>
+                    </tr>
                     <tr>
                       <td style="padding:8px" class="col-xs-10"><input class="form-control" ng-model="question.text"></td>
                       <td style="padding-top:8px" class="col-xs-2">
@@ -55,6 +59,10 @@
                 <table class="table">
                   <thead> <!-- Table Head Tokens Input -->
                     <tr>
+                      <th>Tokens</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr>
                       <td style="padding:8px" ><input class="form-control" ng-model="tokens.text"></td>
                       <td style="padding-top:8px" >
                         <div class="btn-group" role="group">
@@ -65,7 +73,16 @@
                     </tr>
                   </thead> <!-- END Table Head Tokens Input  -->
                   <tbody>
+                    <tr ng-repeat="token in tokenslist">
+                      <td>{{token.name}}</td>
 
+                      <td>
+                        <div class="btn-group" role="group">
+                          <button class="btn btn-danger">Delete</button>
+                          <button class="btn btn-default">Edit</button>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -75,6 +92,7 @@
         </div> <!-- End of First Row -->
       </div> <!-- End of Scenario Container -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+    <script src="controllers/tokenController.js"></script>
     </div> <!-- End of Paper Container -->
   </body>
 </html>
