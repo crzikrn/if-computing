@@ -3,16 +3,16 @@
 ##Basic Information
 Using MEAN Stack for "If Scenario". A game-like app that creates rounds of questions that affects a set of stats or tokens. The user will answer questions accordingly to their judgment, the final outcome of the stat data will be rendered in 3D. The rendered outcome will be a personalized data *"character"*.
 
-##Structure
+##Basic Structure
 - App
   - Scenario
-    - Users
-      - Tokens*
-      - Render
     - Rounds
       - Questions
       - Tokens**
-    -  Archive
+  - Users
+    - Tokens*
+    - Render
+    - Archive (?)
 
 >User Tokens* are called from Rounds Tokens 
 
@@ -24,3 +24,10 @@ Using MEAN Stack for "If Scenario". A game-like app that creates rounds of quest
 | Questions            	| Contains the questions in text format, the Tokens to be affected, and *Answer* in Boolean                             	| Answer + Tokens + StringText 	|
 | Answers              	| Boolean                                                                                                               	| Boolean                      	|
 | Tokens               	| Basic block, the stats for the *Scenario* with a count value. It will be affected by the *Answers* of the *Questions* 	| StringText + Value          	|
+
+##Structure of database (administrative interface) & game interface
+
+Game interface will be separate from the administrative interface. The game will only call the scenario model data to communicate with its user model data. User model data will be only created in the *Game Interface*. Rendering and outcomes in the user model will stay separate from the scenario model data.
+
+
+
