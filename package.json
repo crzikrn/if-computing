@@ -1,0 +1,29 @@
+{
+  "name": "if-computing",
+  "version": "1.0.0",
+  "engine": {
+    "node": "^4.2.1"
+    },
+  "description": "##Basic Information Using MEAN Stack for \"If Scenario\". A game-like app that creates rounds of questions that affects a set of stats or tokens. The user will answer questions accordingly to their judgment, the final outcome of the stat data will be rendered in 3D. The rendered outcome will be a personalized data *\"character\"*.",
+  "main": "server.js",
+  "dependencies": {
+    "mongoose": "^4.3.7",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crzikrn/if-computing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crzikrn/if-computing/issues"
+  },
+  "homepage": "https://github.com/crzikrn/if-computing#readme"
+}
