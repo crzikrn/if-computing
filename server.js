@@ -12,7 +12,7 @@ db.on('open', function(){
  });
 
 //go into public find static index.html (or any)
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
 ////////////////////////////////////////////////////////////////////////////////
