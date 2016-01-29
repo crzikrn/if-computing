@@ -83,6 +83,6 @@ app.put('/tokenlist/:id', function(req,res){
   });
 });
 
- app.listen(theport);
-//app.listen(3001);
+//app.listen(theport);
+app.listen(3001);
 console.log('Server Running on Port 5000');
