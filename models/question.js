@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+//var Token = require('./token.js');
 
 var Schema = mongoose.Schema;
 var questionSchema = new Schema({
@@ -12,4 +13,4 @@ var questionSchema = new Schema({
   }]
 },{collection:"ifscenario"});
 
-module.exports = mongoose.model('Question', tokenSchema);
+module.exports = mongoose.model('Question', questionSchema);

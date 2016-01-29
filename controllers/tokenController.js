@@ -1,7 +1,7 @@
-var myApp = angular.module('if-computing',[]);
+var myApp = angular.module('my.view1',[]);
 
-myApp.controller('tokenCtrl',['$scope','$http',function($scope, $http){
-  console.log('app.js is working');
+myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
+  console.log('appToken.js is working');
 
   var refresh = function(){
     $http.get('/tokenlist').success(function(response){

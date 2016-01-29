@@ -43,7 +43,15 @@
       color: #EEE;
     }
     body{
-      background-color: #512e92;
+      /*background-color: #512e92;*/
+      background: rgba(104,23,255,1);
+      background: -moz-linear-gradient(-45deg, rgba(104,23,255,1) 0%, rgba(138,81,222,1) 24%, rgba(240,255,122,1) 96%, rgba(240,255,122,1) 100%);
+      background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(104,23,255,1)), color-stop(24%, rgba(138,81,222,1)), color-stop(96%, rgba(240,255,122,1)), color-stop(100%, rgba(240,255,122,1)));
+      background: -webkit-linear-gradient(-45deg, rgba(104,23,255,1) 0%, rgba(138,81,222,1) 24%, rgba(240,255,122,1) 96%, rgba(240,255,122,1) 100%);
+      background: -o-linear-gradient(-45deg, rgba(104,23,255,1) 0%, rgba(138,81,222,1) 24%, rgba(240,255,122,1) 96%, rgba(240,255,122,1) 100%);
+      background: -ms-linear-gradient(-45deg, rgba(104,23,255,1) 0%, rgba(138,81,222,1) 24%, rgba(240,255,122,1) 96%, rgba(240,255,122,1) 100%);
+      background: linear-gradient(135deg, rgba(104,23,255,1) 0%, rgba(138,81,222,1) 24%, rgba(240,255,122,1) 96%, rgba(240,255,122,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6817ff', endColorstr='#f0ff7a', GradientType=1 );
     }
     td {
       padding: 0px;
@@ -72,19 +80,18 @@
       font-weight: 300;
       color: #FFF2FA;
     }
-
     </style>
   </head>
 
   <body>
-    <div class="center-container" id="paper" ng-controller="tokenCtrl">
+    <div class="center-container" id="paper">
       <div class="container" id="scenario">
-        <div class="row" id="first">
+        <div class="row" id="first" >
           <h1>IF-Computing,<br> Make a Scenario.</h1>
           <hr>
-          <div class="row" id="Qtokens">
+          <div class="row" id="Qtokens" >
 
-            <div class="col-sm-7">
+            <div class="col-sm-7" ng-controller="QuestionCtrl">
               <!-- CRUD Questions -->
               <h3 class="sub-header">Add a Question</h3>
               <div class="table-responsive">
@@ -111,7 +118,7 @@
               </div>
             </div> <!-- CRUD QUESTIONS COLUMN 8 -->
 
-            <div class="col-sm-5">
+            <div class="col-sm-5" ng-controller="TokenCtrl">
               <!-- CRUD Tokens -->
               <h3 class="sub-header">Add Tokens</h3>
               <div class="table-responsive">
@@ -150,8 +157,10 @@
           </div> <!-- End of Input Questions Tokens Row -->
         </div> <!-- End of First Row -->
       </div> <!-- End of Scenario Container -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
-    <script src="controllers/tokenController.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+      <script src="controllers/allController.js"></script>
+      <script src="controllers/tokenController.js"></script>
+      <script src="controllers/questionController.js"></script>
     </div> <!-- End of Paper Container -->
   </body>
 </html>
