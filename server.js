@@ -47,12 +47,41 @@ app.get('/tokenlist', function (req,res){
     console.log(tokens);
       res.send(tokens);
     });
-    console.log("GET REQUESTED for Tokens");
+    //console.log("GET REQUESTED for Tokens");
 });
 
 app.post('/tokenlist', function (req,res){
   console.log(req.body);
-})
+  var token_new = new Token(req.body);
+  token_new.save(req.body, function(err, doc){
+    res.json(doc);
+  });
+});
+
+app.delete('/tokenlist/:id', function (req,res){
+  var id = req.params.id;
+  console.log(id);
+  Token.findByIdAndRemove({_id: id}, function(err, doc){
+    res.json(doc);
+  });
+});
+
+app.get('/tokenlist/:id', function (req,res){
+  var id = req.params.id;
+  console.log(id);
+  Token.findOne({_id: id}, function(err, doc){
+    console.log('editing'+id);
+    //console.log(token);
+    res.json(doc);
+  });
+});
+
+app.put('/tokenlist/:id', function(req,res){
+  var id = req.params.id;
+  Token.findOneAndUpdate({_id: id}, req.body,function(err,doc){
+    res.json(doc);
+  });
+});
 
 // app.listen(theport);
 app.listen(3001);
