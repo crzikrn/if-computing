@@ -63,19 +63,18 @@
                       <th>Action</th>
                     </tr>
                     <tr>
-                      <td style="padding:8px" ><input class="form-control" ng-model="tokens.text"></td>
+                      <td style="padding:8px" ><input class="form-control" ng-model="token.name"></td>
                       <td style="padding-top:8px" >
                         <div class="btn-group" role="group">
-                          <button class="btn btn-success">Add</button>
-                          <button class="btn btn-default">Edit</button>
+                          <button class="btn btn-success" ng-click="addToken()">Add</button>
+                          <button class="btn btn-default">Clear</button>
                         </div>
                       </td>
                     </tr>
                   </thead> <!-- END Table Head Tokens Input  -->
                   <tbody>
-                    <tr ng-repeat="token in tokenslist">
+                    <tr ng-repeat="token in tokenlist">
                       <td>{{token.name}}</td>
-
                       <td>
                         <div class="btn-group" role="group">
                           <button class="btn btn-danger">Delete</button>
