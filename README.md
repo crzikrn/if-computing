@@ -6,6 +6,7 @@
 3. Structure of Communication
 4. Detail Information of Project
 5. Dependencies and Requirements for Further Development
+6. Extra
 
 ##Basic Information
 IF-Computing is about actions/choices that affect our surroundings and environment (scenario).
@@ -64,9 +65,9 @@ Will start the server on your localhost.
 
 The current version of **server.js** uses **MongoLab** for its database. **MongoLab** is an add-on for heroku servers. Install **MongoLab** on your heroku server and create a database named *ifscenario*. Installing information for MongoLab can be found [HERE: MONGOLAB](https://elements.heroku.com/addons/mongolab)
 
-
-
-
-
-
+##Extra
+####Sketches
+<img src="https://github.com/crzikrn/if-computing/blob/gh-pages/images/sketch01.JPG" width="250px"/>
+<img src="https://github.com/crzikrn/if-computing/blob/gh-pages/images/sketch02.JPG" width="250px"/>
+<img src="https://github.com/crzikrn/if-computing/blob/gh-pages/images/sketch03.JPG" width="250px"/>
 
