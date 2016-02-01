@@ -5,11 +5,19 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+//go into public find static index.html (or any)
+app.use(express.static(__dirname));
+app.use(bodyParser.json());
+
 // mongoose.connect('mongodb://localhost/ifscenario');
 // var db = mongoose.connection;
 // db.on('error',console.error.bind(console, 'connection error: '));
 // db.on('open', function(){
 //    console.log('We are in');
+//    app.models = require('./models/index');
+//    //app.listen(theport);
+//    app.listen(3001);
+//    console.log('Server Running on Port 5000');
 //  });
 
 /////////// FOR HEROKU ////////////////////////////////////////////////////////
@@ -43,16 +51,14 @@ mongoose.connection.once('open',function(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//go into public find static index.html (or any)
-app.use(express.static(__dirname));
-app.use(bodyParser.json());
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////          TOKENS           ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 app.get('/tokenlist', function (req,res){
-  Token.find(function(err,tokens){
+  app.models.Token.find(function(err,tokens){
     console.log(tokens);
       res.send(tokens);
     });
@@ -61,7 +67,7 @@ app.get('/tokenlist', function (req,res){
 
 app.post('/tokenlist', function (req,res){
   console.log(req.body);
-  var token_new = new Token(req.body);
+  var token_new = new app.models.Token(req.body);
   token_new.save(req.body, function(err, doc){
     res.json(doc);
   });
@@ -70,7 +76,7 @@ app.post('/tokenlist', function (req,res){
 app.delete('/tokenlist/:id', function (req,res){
   var id = req.params.id;
   console.log(id);
-  Token.findByIdAndRemove({_id: id}, function(err, doc){
+  app.models.Token.findByIdAndRemove({_id: id}, function(err, doc){
     res.json(doc);
   });
 });
@@ -78,7 +84,7 @@ app.delete('/tokenlist/:id', function (req,res){
 app.get('/tokenlist/:id', function (req,res){
   var id = req.params.id;
   console.log(id);
-  Token.findOne({_id: id}, function(err, doc){
+  app.models.Token.findOne({_id: id}, function(err, doc){
     console.log('editing'+id);
     //console.log(token);
     res.json(doc);
@@ -87,7 +93,7 @@ app.get('/tokenlist/:id', function (req,res){
 
 app.put('/tokenlist/:id', function(req,res){
   var id = req.params.id;
-  Token.findOneAndUpdate({_id: id}, req.body,function(err,doc){
+  app.models.Token.findOneAndUpdate({_id: id}, req.body,function(err,doc){
     res.json(doc);
   });
 });
