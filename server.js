@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Token = require('./models/token.js');
+//var Token = require('./models/token.js');
 //var Question = require('./models/question.js');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -88,7 +88,7 @@ app.put('/tokenlist/:id', function(req,res){
   });
 });
 
-app.models = require('./models/index.js');
+app.models = require('./models/index');
 app.listen(theport);
 // app.listen(3001);
 console.log('Server Running on Port 5000');
