@@ -32,11 +32,15 @@ mongoose.connect(uristring, function (err, res) {
   } else {
     console.log ('Succeeded connected to: ' + uristring);
   }
-
-
-
-
 });
+
+mongoose.connection.once('open',function(){
+  app.models = require('./models/index');
+  app.listen(theport);
+  // app.listen(3001);
+  console.log('Server Running on Port 5000');
+});
+
 ///////////////////////////////////////////////////////////////////////////////
 
 //go into public find static index.html (or any)
@@ -87,8 +91,3 @@ app.put('/tokenlist/:id', function(req,res){
     res.json(doc);
   });
 });
-
-app.models = require('./models/index');
-app.listen(theport);
-// app.listen(3001);
-console.log('Server Running on Port 5000');
