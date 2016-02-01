@@ -1,4 +1,4 @@
 module.exports = {
-  token: require('./token.js');
-  question: require('./question.js');  
+  token: require('./token.js'),
+  question: require('./question.js')
 };
