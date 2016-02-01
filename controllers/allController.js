@@ -1,1 +1,1 @@
-angular.module('if-computing', ['my.view1','my.view2']);
+angular.module('if-computing', ['my.token.ctrl','my.question.ctrl']);

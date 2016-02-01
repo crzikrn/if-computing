@@ -65,6 +65,9 @@
       /*font-style: italic;*/
       color: #FFFFF3;
     }
+    h4{
+      color: #FFFFF3;
+    }
     thead {
       font-family: 'Roboto';
       font-weight: 300;
@@ -77,6 +80,25 @@
       font-weight: 300;
       color: #FFF2FA;
     }
+    p {
+        color: #F3F3F3;
+    }
+    .lead{
+        font-size: 18px;
+    }
+    .thumbnail{
+      background:#00D5B0;
+      margin: 8px;
+      border: 0;
+      box-shadow: 0 3px 5px rgba(0,0,0,.25);
+    }
+    #thumb{
+      margin: 0 4px;
+      padding: 15px;
+      border-radius: 20px;
+
+    }
+
     </style>
   </head>
 
@@ -84,8 +106,22 @@
     <div class="center-container" id="paper">
       <div class="container" id="scenario">
         <div class="row" id="first" >
-          <h1>IF-Computing,<br> Make a Scenario.</h1>
-          <hr>
+          <div class="page-header">
+            <h1>IF-Computing,<br> Make a Scenario.</h1>
+            <div class="lead col-sm-12">
+              <br><br>
+              <div class=" col-sm-3" id="thumb"><h3><strong>About</strong></h3><p>IF-Scenario-making is about making scenarios for people to guide them and teach them the importance of choice making.</p></div>
+              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 1</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
+              </div>
+              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 2</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
+              </div>
+              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 3</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
+              </div>
+              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 4</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
+              </div>
+            </div>
+          </div>
+
           <div class="row" id="Qtokens" >
 
             <div class="col-sm-7" ng-controller="QuestionCtrl">
