@@ -34,7 +34,7 @@ mongoose.connect(uristring, function (err, res) {
   }
 
 
-  app.models = require('./models/index.js');
+
 
 });
 ///////////////////////////////////////////////////////////////////////////////
@@ -88,7 +88,7 @@ app.put('/tokenlist/:id', function(req,res){
   });
 });
 
-
+app.models = require('./models/index.js');
 app.listen(theport);
 // app.listen(3001);
 console.log('Server Running on Port 5000');
