@@ -1,4 +1,4 @@
-var myApp = angular.module('my.token.ctrl',[]);
+var myApp = angular.module('my.tokenctrl',[]);
 
 myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
   console.log('appToken.js is working');

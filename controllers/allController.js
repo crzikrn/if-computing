@@ -1,1 +1,1 @@
-angular.module('if-computing', ['my.token.ctrl','my.question.ctrl']);
+angular.module('if-computing', ['my.tokenctrl','my.questionctrl']);
