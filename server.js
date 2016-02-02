@@ -97,3 +97,25 @@ app.put('/tokenlist/:id', function(req,res){
     res.json(doc);
   });
 });
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         QUESTIONS           ///////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+app.get('/questionlist', function (req,res){
+  app.models.Question.find(function(err,qtions){
+    console.log(qtions);
+      res.send(qtions);
+    });
+    //console.log("GET REQUESTED for Tokens");
+});
+
+app.post('/questionlist', function (req,res){
+  console.log(req.body);
+  var question_new = new app.models.Question(req.body);
+  question_new.save(req.body, function(err, doc){
+    res.json(doc);
+  });
+});
