@@ -5,7 +5,7 @@ myApp.controller('QuestionCtrl',['$scope','$http',function($scope, $http){
 
   var refresh = function(){
     $http.get('/questionlist').success(function(response){
-        console.log("Received TOKENS DATA requested!");
+        console.log(response);
         $scope.questionlist = response;
         $scope.question = "";
       });
@@ -21,5 +21,12 @@ myApp.controller('QuestionCtrl',['$scope','$http',function($scope, $http){
       });
     }
 
+    $scope.deleteQuestion = function(id){
+      $http.delete('/questionlist/' + id).success(function(response){
+        console.log(id);
+        console.log('Successfully deleted' + response);
+        refresh();
+      });
+    }
 
 }]);

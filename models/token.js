@@ -8,7 +8,21 @@ var tokenSchema = new Schema({
   },
   value:{
     type:Number,
-    default: 0
+    default: 0,
+    required:true,
+  },
+  question:{
+    text: {
+      type: String,
+      required: true
+    },
+    answer: Boolean,
+  },
+  token:{
+    [{
+        name: String,
+        value: Number
+    }]
   }
 },{collection:"ifscenario"});
 

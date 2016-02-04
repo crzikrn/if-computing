@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-//var Token = require('./token.js');
+var Token = require('./token.js');
 
 var Schema = mongoose.Schema;
 var questionSchema = new Schema({
@@ -7,10 +7,8 @@ var questionSchema = new Schema({
     type: String,
     required: true
   },
-  tokenlist: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Token'
-  }]
+  answer: Boolean,
+  tokenlist: [Token.schema]
 },{collection:"ifscenario"});
 
 module.exports = mongoose.model('Question', questionSchema);

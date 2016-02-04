@@ -135,7 +135,7 @@
                       <th>Action</th>
                     </tr>
                     <tr>
-                      <td style="padding:8px" class="col-sm-9"><input class="form-control" ng-model="question.text"></td>
+                      <td style="padding:8px" class="col-sm-9"><input class="form-control" ng-model="token.question.text"></td>
                       <td style="padding-top:8px" class="col-sm-3">
                         <div class="btn-group" role="group">
                           <button class="btn btn-success" ng-click="addQuestion()">Add</button>
@@ -146,8 +146,16 @@
                   </thead> <!-- END Table Head Questions Input  -->
                   <tbody>
                     <tr ng-repeat="question in questionlist">
-                      <td>{{question.text}}</td>
-
+                      <!-- <tr ng-repeat="token in tokenlist"> -->
+                        <td>{{question.question}}</td>
+                        <td>
+                          <div class="btn-group" role="group">
+                            <button class="btn btn-danger" ng-click="deleteQuestion(question._id)">Delete</button>
+                            <button class="btn btn-default" >Edit</button>
+                          </div>
+                        </td>
+                    <!-- </tr> -->
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -174,9 +182,11 @@
                       </td>
                     </tr>
                   </thead> <!-- END Table Head Tokens Input  -->
-                  <tbody>
-                    <tr ng-repeat="token in tokenlist">
-                      <td>{{token.name}}</td>
+                  <tbody ng-repeat="token in tokenlist">
+                    <tr ng-repeat="name in token.token">
+                      <!-- <td>{{token.name}}</td> -->
+                      <!-- <td>{{token.token[0].name}}</td> -->
+                      <td>{{name.name}}</td>
                       <td>
                         <div class="btn-group" role="group">
                           <button class="btn btn-danger" ng-click="deleteToken(token._id)">Delete</button>
