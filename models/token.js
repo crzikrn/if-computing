@@ -18,12 +18,12 @@ var tokenSchema = new Schema({
     },
     answer: Boolean,
   },
-  token:{
+  token:
     [{
         name: String,
         value: Number
     }]
-  }
+  
 },{collection:"ifscenario"});
 
 module.exports = mongoose.model('Token', tokenSchema);

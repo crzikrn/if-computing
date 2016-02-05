@@ -124,7 +124,7 @@
 
           <div class="row" id="Qtokens" >
 
-            <div class="col-sm-7" ng-controller="QuestionCtrl">
+            <div class="col-sm-7" ng-controller="TokenCtrl">
               <!-- CRUD Questions -->
               <h3 class="sub-header">Add a Question</h3>
               <div class="table-responsive">
@@ -189,7 +189,7 @@
                       <td>{{name.name}}</td>
                       <td>
                         <div class="btn-group" role="group">
-                          <button class="btn btn-danger" ng-click="deleteToken(token._id)">Delete</button>
+                          <button class="btn btn-danger" ng-click="updateToken()">Delete</button>
                           <button class="btn btn-default" ng-click="editToken(token._id)">Edit</button>
                         </div>
                       </td>

@@ -66,8 +66,9 @@ app.get('/tokenlist', function (req,res){
 });
 
 app.post('/tokenlist', function (req,res){
-  //console.log(req.body);
+  console.log(req.body);
   var token_new = new app.models.Token(req.body);
+  console.log(token_new);
   token_new.save(req.body, function(err, doc){
     res.json(doc);
   });
@@ -85,16 +86,19 @@ app.get('/tokenlist/:id', function (req,res){
   var id = req.params.id;
   console.log(id);
   app.models.Token.findOne({_id: id}, function(err, doc){
-    console.log('editing'+id);
-    //console.log(token);
+    console.log('editing from server: '+id);
+    console.log(doc);
     res.json(doc);
   });
 });
 
 app.put('/tokenlist/:id', function(req,res){
   var id = req.params.id;
-  app.models.Token.findOneAndUpdate({_id: id}, req.body,function(err,doc){
+  var update = {$push: {"token": req.body}}
+  console.log(id,update);
+  app.models.Token.findOneAndUpdate({_id: id}, update,function(err,doc){
     res.json(doc);
+    console.log(res)
   });
 });
 
@@ -104,26 +108,26 @@ app.put('/tokenlist/:id', function(req,res){
 ////////////////////////////////         QUESTIONS           ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get('/questionlist', function (req,res){
-  app.models.Question.find(function(err,qtions){
-    console.log(qtions);
-      res.send(qtions);
-    });
-    //console.log("GET REQUESTED for Tokens");
-});
-
-app.post('/questionlist', function (req,res){
-  console.log(req.body);
-  var question_new = new app.models.Question(req.body);
-  question_new.save(req.body, function(err, doc){
-    res.json(doc);
-  });
-});
-
-app.delete('/questionlist/:id', function (req,res){
-  var id = req.params.id;
-  console.log(id);
-  app.models.Question.findByIdAndRemove({_id: id}, function(err, doc){
-    res.json(doc);
-  });
-});
+// app.get('/questionlist', function (req,res){
+//   app.models.Question.find(function(err,qtions){
+//     console.log(qtions);
+//       res.send(qtions);
+//     });
+//     //console.log("GET REQUESTED for Tokens");
+// });
+//
+// app.post('/questionlist', function (req,res){
+//   console.log(req.body);
+//   var question_new = new app.models.Question(req.body);
+//   question_new.save(req.body, function(err, doc){
+//     res.json(doc);
+//   });
+// });
+//
+// app.delete('/questionlist/:id', function (req,res){
+//   var id = req.params.id;
+//   console.log(id);
+//   app.models.Question.findByIdAndRemove({_id: id}, function(err, doc){
+//     res.json(doc);
+//   });
+// });
