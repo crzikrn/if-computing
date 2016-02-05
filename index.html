@@ -11,93 +11,6 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic,100italic' rel='stylesheet' type='text/css'>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>if-computing</title>
-    <style>
-    .center-container { margin: auto; max-width: 1600px;}
-    .btn {
-      text-transform: uppercase;
-    }
-    .btn-danger {
-      background: #F718A9;
-      text-transform: uppercase;
-      color: #FFF;
-      -webkit-transition-duration: 0.4s; /* Safari */
-      transition-duration: 0.4s;
-    }
-    .btn-danger:hover {
-      background: #F75588;
-      color: #EEE;
-    }
-    .btn-success {
-      background: #00D5B0;
-
-      color: #FFF;
-      -webkit-transition-duration: 0.4s; /* Safari */
-      transition-duration: 0.4s;
-    }
-    .btn-success:hover {
-      background: #00F1A2;
-      color: #EEE;
-    }
-    .btn-success:focus, .btn-success:active:focus, .btn-success.active:focus {
-      background: #00E1A0;
-      color: #EEE;
-    }
-    body{
-      /*background-color: #512e92;*/
-
-      background: #DD5E89; /* fallback for old browsers */
-      background: -webkit-linear-gradient(to left, #DD5E89 , #F7BB97); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to left, #DD5E89 , #F7BB97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    }
-    td {
-      padding: 0px;
-    }
-    h1 {
-      font-family: 'Raleway';
-      font-weight: 400;
-      font-size:  100px;
-      color: #FFF2FA;
-    }
-    h3 {
-      font-family: 'Roboto';
-      font-weight: 300;
-      /*font-style: italic;*/
-      color: #FFFFF3;
-    }
-    h4{
-      color: #FFFFF3;
-    }
-    thead {
-      font-family: 'Roboto';
-      font-weight: 300;
-      font-size:  20px;
-      color: #FFF2FA;
-      font-style: normal;
-    }
-    tbody{
-      font-family: 'Roboto';
-      font-weight: 300;
-      color: #FFF2FA;
-    }
-    p {
-        color: #F3F3F3;
-    }
-    .lead{
-        font-size: 18px;
-    }
-    .thumbnail{
-      background:#00D5B0;
-      margin: 8px;
-      border: 0;
-      box-shadow: 0 3px 5px rgba(0,0,0,.25);
-    }
-    #thumb{
-      margin: 0 4px;
-      padding: 15px;
-      border-radius: 20px;
-
-    }
 
     </style>
   </head>
@@ -108,88 +21,53 @@
         <div class="row" id="first" >
           <div class="page-header">
             <h1>IF-Computing,<br> Make a Scenario.</h1>
-            <div class="lead col-sm-12">
-              <br><br>
-              <div class=" col-sm-3" id="thumb"><h3><strong>About</strong></h3><p>IF-Scenario-making is about making scenarios for people to guide them and teach them the importance of choice making.</p></div>
-              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 1</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
-              </div>
-              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 2</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
-              </div>
-              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 3</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
-              </div>
-              <div class="thumbnail col-sm-2" id="thumb"><h4>Scene 4</h4><p>Everyone's choices counts for each and everyone of us is not only powerful to influence others, but because we are all precious beings to one another.</p>
-              </div>
-            </div>
+
           </div>
 
           <div class="row" id="Qtokens" >
 
-            <div class="col-sm-7" ng-controller="TokenCtrl">
-              <!-- CRUD Questions -->
-              <h3 class="sub-header">Add a Question</h3>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead> <!-- Table Head Questions Input -->
-                    <tr>
-                      <th>Questions</th>
-                      <th>Action</th>
-                    </tr>
-                    <tr>
-                      <td style="padding:8px" class="col-sm-9"><input class="form-control" ng-model="token.question.text"></td>
-                      <td style="padding-top:8px" class="col-sm-3">
-                        <div class="btn-group" role="group">
-                          <button class="btn btn-success" ng-click="addQuestion()">Add</button>
-                          <button class="btn btn-default">Edit</button>
-                        </div>
-                      </td>
-                    </tr>
-                  </thead> <!-- END Table Head Questions Input  -->
-                  <tbody>
-                    <tr ng-repeat="question in questionlist">
-                      <!-- <tr ng-repeat="token in tokenlist"> -->
-                        <td>{{question.question}}</td>
-                        <td>
-                          <div class="btn-group" role="group">
-                            <button class="btn btn-danger" ng-click="deleteQuestion(question._id)">Delete</button>
-                            <button class="btn btn-default" >Edit</button>
-                          </div>
-                        </td>
-                    <!-- </tr> -->
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> <!-- CRUD QUESTIONS COLUMN 8 -->
-
-            <div class="col-sm-5" ng-controller="TokenCtrl">
+            <div class="col-sm-12" ng-controller="TokenCtrl">
               <!-- CRUD Tokens -->
-              <h3 class="sub-header">Add Tokens</h3>
-              <div class="table-responsive">
+              <h3 class="sub-header"><button class="btn btn-danger" ng-click="addEmptyScenario()">Add a Scenario</button></h3>
+              <div class="table-responsive" >
                 <table class="table">
                   <thead> <!-- Table Head Tokens Input -->
                     <tr>
+                      <th>Scenario</th>
+                      <th>Questions</th>
                       <th>Tokens</th>
-                      <th>Action</th>
                     </tr>
-                    <tr>
-                      <td style="padding:8px" ><input class="form-control" ng-model="token.name"></td>
+                    <tr >
+                      <td style="padding:8px" ><input class="form-control" ng-model="game.theme"></td>
+                      <td style="padding:8px" ><input class="form-control" ng-model="game.question.text"></td>
+                      <td style="padding:8px" ><input class="form-control" ng-model="game.token"></td>
                       <td style="padding-top:8px" >
+
                         <div class="btn-group" role="group">
-                          <button class="btn btn-success" ng-click="addToken()">Add</button>
-                          <button class="btn btn-success" ng-click="updateToken()">Update</button>
-                          <button class="btn btn-default" ng-click="clearToken()">Clear</button>
                         </div>
+                        <button class="btn btn-success" ng-click="addScenario()">Add</button>
+
                       </td>
                     </tr>
                   </thead> <!-- END Table Head Tokens Input  -->
-                  <tbody ng-repeat="token in tokenlist">
-                    <tr ng-repeat="name in token.token">
+                  <tbody ng-repeat="game in set">
+                    <tr>
+                    <td>{{game.theme}}</td>
+                    <td>{{game.question.text}}
+                    </td>
+                    <td><button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button></td>
+                    <td><button class="btn btn-success" >Show more</button></td>
+                  </tr>
+                    <tr ng-repeat="token in game.token">
                       <!-- <td>{{token.name}}</td> -->
                       <!-- <td>{{token.token[0].name}}</td> -->
-                      <td>{{name.name}}</td>
+
+                      <td>{{token.name}}</td>
+                      <td>{{game.theme}}</td>
                       <td>
                         <div class="btn-group" role="group">
-                          <button class="btn btn-danger" ng-click="updateToken()">Delete</button>
+                          <button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button>
+                          <!-- <button class="btn btn-danger" ng-click="updateToken()">Delete</button> -->
                           <button class="btn btn-default" ng-click="editToken(token._id)">Edit</button>
                         </div>
                       </td>

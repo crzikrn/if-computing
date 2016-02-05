@@ -1,4 +1,4 @@
 module.exports = {
-  Token: require('./token.js'),
+  Game: require('./game.js'),
   //Question: require('./question.js')
 };

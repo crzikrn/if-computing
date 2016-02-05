@@ -57,77 +57,70 @@ db.on('open', function(){
 //////////////////////////////////          TOKENS           ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get('/tokenlist', function (req,res){
-  app.models.Token.find(function(err,tokens){
+app.get('/set', function (req,res){
+  app.models.Game.find(function(err,tokens){
     //console.log(tokens);
       res.send(tokens);
     });
-    //console.log("GET REQUESTED for Tokens");
 });
 
-app.post('/tokenlist', function (req,res){
-  console.log(req.body);
-  var token_new = new app.models.Token(req.body);
-  console.log(token_new);
-  token_new.save(req.body, function(err, doc){
+app.post('/set', function (req,res){
+
+  var game = new app.models.Game();
+  game.save(function(err,doc){
     res.json(doc);
   });
 });
 
-app.delete('/tokenlist/:id', function (req,res){
-  var id = req.params.id;
-  console.log(id);
-  app.models.Token.findByIdAndRemove({_id: id}, function(err, doc){
-    res.json(doc);
-  });
-});
-
-app.get('/tokenlist/:id', function (req,res){
-  var id = req.params.id;
-  console.log(id);
-  app.models.Token.findOne({_id: id}, function(err, doc){
-    console.log('editing from server: '+id);
-    console.log(doc);
-    res.json(doc);
-  });
-});
-
-app.put('/tokenlist/:id', function(req,res){
-  var id = req.params.id;
-  var update = {$push: {"token": req.body}}
-  console.log(id,update);
-  app.models.Token.findOneAndUpdate({_id: id}, update,function(err,doc){
-    res.json(doc);
-    console.log(res)
-  });
-});
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////         QUESTIONS           ///////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// app.get('/questionlist', function (req,res){
-//   app.models.Question.find(function(err,qtions){
-//     console.log(qtions);
-//       res.send(qtions);
-//     });
-//     //console.log("GET REQUESTED for Tokens");
-// });
-//
-// app.post('/questionlist', function (req,res){
+// app.post('/set', function (req,res){
 //   console.log(req.body);
-//   var question_new = new app.models.Question(req.body);
-//   question_new.save(req.body, function(err, doc){
+//   var game = new app.models.Game(req.body);
+//   game.save(req.body, function(err, doc){
+//     res.json(doc);
+//   });
+// });
+
+app.delete('/set/:id', function (req,res){
+  console.log(req.body);
+  var id = req.params.id;
+  app.models.Game.findByIdAndRemove({_id: id}, function(err, doc){
+    res.json(doc);
+  })
+});
+
+// app.post('/tokenlist', function (req,res){
+//   console.log(req.body);
+//   var token_new = new app.models.Token(req.body);
+//   console.log(token_new);
+//   token_new.save(req.body, function(err, doc){
 //     res.json(doc);
 //   });
 // });
 //
-// app.delete('/questionlist/:id', function (req,res){
+// app.delete('/tokenlist/:id', function (req,res){
 //   var id = req.params.id;
 //   console.log(id);
-//   app.models.Question.findByIdAndRemove({_id: id}, function(err, doc){
+//   app.models.Token.findByIdAndRemove({_id: id}, function(err, doc){
 //     res.json(doc);
+//   });
+// });
+//
+// app.get('/tokenlist/:id', function (req,res){
+//   var id = req.params.id;
+//   console.log(id);
+//   app.models.Token.findOne({_id: id}, function(err, doc){
+//     console.log('editing from server: '+id);
+//     console.log(doc);
+//     res.json(doc);
+//   });
+// });
+//
+// app.put('/tokenlist/:id', function(req,res){
+//   var id = req.params.id;
+//   var update = {$push: {"token": req.body}}
+//   console.log(id,update);
+//   app.models.Token.findOneAndUpdate({_id: id}, update,function(err,doc){
+//     res.json(doc);
+//     console.log(res)
 //   });
 // });
