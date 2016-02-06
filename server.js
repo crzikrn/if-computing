@@ -64,7 +64,7 @@ app.get('/set', function (req,res){
     });
 });
 
-app.post('/set', function (req,res){
+app.post('/emptyScene', function (req,res){
 
   var game = new app.models.Game();
   game.save(function(err,doc){
@@ -72,13 +72,13 @@ app.post('/set', function (req,res){
   });
 });
 
-// app.post('/set', function (req,res){
-//   console.log(req.body);
-//   var game = new app.models.Game(req.body);
-//   game.save(req.body, function(err, doc){
-//     res.json(doc);
-//   });
-// });
+app.post('/set', function (req,res){
+  console.log(req.body);
+  var game = new app.models.Game(req.body);
+  game.save(req.body, function(err, doc){
+    res.json(doc);
+  });
+});
 
 app.delete('/set/:id', function (req,res){
   console.log(req.body);
@@ -86,6 +86,35 @@ app.delete('/set/:id', function (req,res){
   app.models.Game.findByIdAndRemove({_id: id}, function(err, doc){
     res.json(doc);
   })
+});
+
+app.get('/set/:id', function (req, res){
+  console.log(req.body);
+  var id = req.params.id;
+  app.models.Game.findOne({_id: id}, function(err,doc){
+    console.log('edit from server');
+    res.json(doc)
+  });
+});
+
+app.put('/set/:id', function(req,res){
+  var id = req.params.id;
+  console.log(req.body.question);
+  var update = {$push: {"question": req.body.question}}
+  console.log(update);
+//   var update = {
+//     $push: {
+//     "question": req.body.question,
+//     "theme": req.body.theme,
+//     "token": req.body.token
+//   }
+// };
+
+  app.models.Game.findOneAndUpdate({_id: id}, update,function(err,doc){
+    res.json(doc);
+    //console.log(res)
+  });
+  console.log(update);
 });
 
 // app.post('/tokenlist', function (req,res){

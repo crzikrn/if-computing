@@ -1,20 +1,23 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
+
+var question = new Schema({
+  text: {
+    type:String,
+    required: true,
+    default: 'Choose a Question'
+  },
+  answer:Boolean
+});
+
 var gameSchema = new Schema({
   theme:{
     type:String,
     required:true,
     default: 'Choose a Theme'
   },
-  question:[{
-    text: {
-      type: String,
-      required: true,
-      default: 'Choose a Question'
-    },
-    answer: Boolean,
-  }],
+  question:[question],
   token:
     [{
         name: String,

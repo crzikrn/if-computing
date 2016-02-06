@@ -3,10 +3,10 @@ var myApp = angular.module('my.tokenctrl',[]);
 myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
   console.log('appToken.js has started');
 
-
+  $scope.edit = false;
 
   $scope.addEmptyScenario = function(){
-    $http.post('/set').success(function(response){
+    $http.post('/emptyScene').success(function(response){
       console.log('added new empty scene');
       refresh();
     })
@@ -25,6 +25,12 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
   $scope.addScenario = function(){
 
     console.log('this is '+ $scope.game.token);
+    //make question array
+    var oneQuestion = $scope.game.question.text
+    console.log($scope.game.question.text)
+    var questions = [];
+    questions.push({text: oneQuestion});
+    $scope.game.question = questions;
 
     //make tokens as seperate
     var array = ($scope.game.token).split(/[ ,;]+/);
@@ -48,9 +54,22 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
     });
   }
 
-  $scope.valueChecked = function(){
-    $scope.myValue = ! $scope.myValue;
+  $scope.editScenario = function(id){
+    $scope.edit = true;
+    $http.get('/set/' + id).success(function(response){
+      console.log('You are editing: ' + id);
+      $scope.game = response;
+      console.log(response.question);
+    });
   }
+
+  $scope.updateScenario = function(id){
+    $http.put('set/' + $scope.game._id, $scope.game).success(function(response){
+      refresh();
+      $scope.edit = false;
+    });
+  }
+
   // $scope.addToken = function(){
   //
   //   console.log($scope.token);

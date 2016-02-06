@@ -39,13 +39,17 @@
                     </tr>
                     <tr >
                       <td style="padding:8px" ><input class="form-control" ng-model="game.theme"></td>
+                      <!-- <td style="padding:8px" ng-repeat="question in game.question" ><input class="form-control" ng-model="question.text"></td>
+                      <td style="padding:8px" ng-repeat="token in game.token" ><input class="form-control"  ng-model="token.name"></td> -->
                       <td style="padding:8px" ><input class="form-control" ng-model="game.question.text"></td>
-                      <td style="padding:8px" ><input class="form-control" ng-model="game.token"></td>
+                      <td style="padding:8px" ><input class="form-control"  ng-model="game.token"></td>
                       <td style="padding-top:8px" >
 
                         <div class="btn-group" role="group">
+                          <button class="btn btn-success" ng-hide="edit" ng-click="addScenario()">Add</button>
+                          <button class="btn btn-success" ng-show="edit" ng-click="updateScenario()">Update</button>
                         </div>
-                        <button class="btn btn-success" ng-click="addScenario()">Add</button>
+
 
                       </td>
                     </tr>
@@ -56,7 +60,9 @@
                     <td>{{game.question.text}}
                     </td>
                     <td><button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button></td>
+                      <td><button class="btn btn-danger" ng-click="editScenario(game._id)">Edit</button></td>
                     <td><button class="btn btn-success" >Show more</button></td>
+
                   </tr>
                     <tr ng-repeat="token in game.token">
                       <!-- <td>{{token.name}}</td> -->
