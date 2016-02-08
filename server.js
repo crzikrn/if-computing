@@ -9,45 +9,45 @@ var app = express();
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
-// mongoose.connect('mongodb://localhost/ifscenario');
-// var db = mongoose.connection;
-// db.on('error',console.error.bind(console, 'connection error: '));
-// db.on('open', function(){
-//    console.log('We are in');
-//    app.models = require('./models/index');
-//    //app.listen(theport);
-//    app.listen(3001);
-//    console.log('Server Running on Port 5000');
-//  });
+mongoose.connect('mongodb://localhost/ifscenario');
+var db = mongoose.connection;
+db.on('error',console.error.bind(console, 'connection error: '));
+db.on('open', function(){
+   console.log('We are in');
+   app.models = require('./models/index');
+   //app.listen(theport);
+   app.listen(3001);
+   console.log('Server Running on Port 5000');
+ });
 
 /////////// FOR HEROKU ////////////////////////////////////////////////////////
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
-var uristring =
-  process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/ifscenario';
-
-// The http server will listen to an appropriate port, or default to
-// port 5000.
-var theport = process.env.PORT || 5000;
-
-// Makes connection asynchronously.  Mongoose will queue up database
-// operations and release them when the connection is complete.
-mongoose.connect(uristring, function (err, res) {
-  if (err) {
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-  } else {
-    console.log ('Succeeded connected to: ' + uristring);
-  }
-});
-
-mongoose.connection.once('open',function(){
-  app.models = require('./models/index');
-  app.listen(theport);
-  // app.listen(3001);
-  console.log('Server Running on Port 5000');
-});
+// var uristring =
+//   process.env.MONGOLAB_URI ||
+//   process.env.MONGOHQ_URL ||
+//   'mongodb://localhost/ifscenario';
+//
+// // The http server will listen to an appropriate port, or default to
+// // port 5000.
+// var theport = process.env.PORT || 5000;
+//
+// // Makes connection asynchronously.  Mongoose will queue up database
+// // operations and release them when the connection is complete.
+// mongoose.connect(uristring, function (err, res) {
+//   if (err) {
+//     console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+//   } else {
+//     console.log ('Succeeded connected to: ' + uristring);
+//   }
+// });
+//
+// mongoose.connection.once('open',function(){
+//   app.models = require('./models/index');
+//   app.listen(theport);
+//   // app.listen(3001);
+//   console.log('Server Running on Port 5000');
+// });
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -100,7 +100,7 @@ app.get('/set/:id', function (req, res){
 app.put('/set/:id', function(req,res){
   var id = req.params.id;
   console.log(req.body.question);
-  var update = {$push: {"question": req.body.question}}
+  var update = {$push: {"question": {$each: req.body.question}}}
   console.log(update);
 //   var update = {
 //     $push: {
@@ -114,7 +114,6 @@ app.put('/set/:id', function(req,res){
     res.json(doc);
     //console.log(res)
   });
-  console.log(update);
 });
 
 // app.post('/tokenlist', function (req,res){

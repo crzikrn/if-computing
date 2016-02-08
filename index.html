@@ -144,7 +144,7 @@
                   <tbody ng-repeat="game in set">
                     <tr>
                     <td>{{game.theme}}</td>
-                    <td>{{game.question.text}}
+                    <td ng-repeat="question in game.question"> {{question.text}}
                     </td>
                     <td><button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button></td>
                       <td><button class="btn btn-danger" ng-click="editScenario(game._id)">Edit</button></td>
