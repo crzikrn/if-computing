@@ -5,6 +5,7 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
 
   $scope.edit = false;
 
+  //ADD EmptyScenario For Those Who just want a dummy start
   $scope.addEmptyScenario = function(){
     $http.post('/emptyScene').success(function(response){
       console.log('added new empty scene');
@@ -12,6 +13,7 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
     })
   }
 
+  //GET data to display to see what's available
   var refresh = function(){
     $http.get('/set').success(function(response){
       console.log("Received TOKENS DATA requested!");
@@ -22,6 +24,7 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
   }
   refresh();
 
+  //ADD Scenario - with Theme, Question, and Tokens
   $scope.addScenario = function(){
 
     console.log('this is '+ $scope.game.token);
@@ -47,6 +50,7 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
     })
   }
 
+  //DELETE Whole Scenario or Game
   $scope.deleteScenario = function(id){
     $http.delete('/set/' + id).success(function(response){
       console.log('Successfully deleted Scenario of: ' + response);
@@ -54,6 +58,7 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
     });
   }
 
+  //EDIT Scenario, Get data id for the one clicked
   $scope.editScenario = function(id){
     $scope.edit = true;
     $http.get('/set/' + id).success(function(response){
@@ -63,47 +68,12 @@ myApp.controller('TokenCtrl',['$scope','$http',function($scope, $http){
     });
   }
 
+  //PUT new data to old data
   $scope.updateScenario = function(id){
     $http.put('set/' + $scope.game._id, $scope.game).success(function(response){
       refresh();
       $scope.edit = false;
     });
   }
-
-  // $scope.addToken = function(){
-  //
-  //   console.log($scope.token);
-  //   $http.post('/tokenlist', $scope.token).success(function(response){
-  //     //Added to the data
-  //     refresh();
-  //   });
-  // }
-  //
-  // $scope.deleteToken = function(id){
-  //   $http.delete('/tokenlist/' + id).success(function(response){
-  //     console.log(id);
-  //     console.log('Successfully deleted' + response);
-  //     refresh();
-  //   });
-  // }
-  //
-  // $scope.editToken = function(id){
-  //   $http.get('/tokenlist/' + id).success(function(response){
-  //     console.log("Editing: " + id);
-  //     console.log(response);
-  //     $scope.token = response;
-  //   });
-  // }
-  //
-  // $scope.updateToken = function(){
-  //   console.log($scope.token._id);
-  //   $http.put('/tokenlist/' + $scope.token._id, $scope.token).success(function(response){
-  //     refresh();
-  //   });
-  // }
-  //
-  // $scope.clearToken = function(){
-  //   $scope.token = "";
-  // }
 
 }]);

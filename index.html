@@ -7,99 +7,11 @@
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./style.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic,100italic' rel='stylesheet' type='text/css'>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>if-computing</title>
-    <style>
-        .center-container { margin: auto; max-width: 1600px;}
-        .btn {
-          text-transform: uppercase;
-        }
-        .btn-danger {
-          background: #F718A9;
-          text-transform: uppercase;
-          color: #FFF;
-          -webkit-transition-duration: 0.4s; /* Safari */
-          transition-duration: 0.4s;
-        }
-        .btn-danger:hover {
-          background: #F75588;
-          color: #EEE;
-        }
-        .btn-success {
-          background: #00D5B0;
-
-          color: #FFF;
-          -webkit-transition-duration: 0.4s; /* Safari */
-          transition-duration: 0.4s;
-        }
-        .btn-success:hover {
-          background: #00F1A2;
-          color: #EEE;
-        }
-        .btn-success:focus, .btn-success:active:focus, .btn-success.active:focus {
-          background: #00E1A0;
-          color: #EEE;
-        }
-        body{
-          /*background-color: #512e92;*/
-
-          background: #DD5E89; /* fallback for old browsers */
-          background: -webkit-linear-gradient(to left, #DD5E89 , #F7BB97); /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to left, #DD5E89 , #F7BB97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-        }
-        td {
-          padding: 0px;
-        }
-        h1 {
-          font-family: 'Raleway';
-          font-weight: 400;
-          font-size:  100px;
-          color: #FFF2FA;
-        }
-        h3 {
-          font-family: 'Roboto';
-          font-weight: 300;
-          /*font-style: italic;*/
-          color: #FFFFF3;
-        }
-        h4{
-          color: #FFFFF3;
-        }
-        thead {
-          font-family: 'Roboto';
-          font-weight: 300;
-          font-size:  20px;
-          color: #FFF2FA;
-          font-style: normal;
-        }
-        tbody{
-          font-family: 'Roboto';
-          font-weight: 300;
-          color: #FFF2FA;
-        }
-        p {
-            color: #F3F3F3;
-        }
-        .lead{
-            font-size: 18px;
-        }
-        .thumbnail{
-          background:#00D5B0;
-          margin: 8px;
-          border: 0;
-          box-shadow: 0 3px 5px rgba(0,0,0,.25);
-        }
-        #thumb{
-          margin: 0 4px;
-          padding: 15px;
-          border-radius: 20px;
-
-        }
-
-        </style>
   </head>
 
   <body>
@@ -124,7 +36,6 @@
                 The Tokens sections ADDS an array of Tokens seperated by commas.<br>
                 You can look at the data you ADDED by going to: if-computing.herokuapp.com/set. <br>
                 DELETE BUTTON WORKS <br>
-
               </p>
               <h3 class="sub-header"><button class="btn btn-danger" ng-click="addEmptyScenario()">Add a Scenario</button></h3>
               <h5> Adds an empty scenario </h5>
@@ -136,43 +47,39 @@
                       <th>Questions</th>
                       <th>Tokens</th>
                     </tr>
-                    <tr >
+                    <tr>
+                      <!-- Input forms have ng-model so saved data can be saved in the right json object -->
                       <td style="padding:8px" ><input class="form-control" ng-model="game.theme"></td>
-                      <!-- <td style="padding:8px" ng-repeat="question in game.question" ><input class="form-control" ng-model="question.text"></td>
-                      <td style="padding:8px" ng-repeat="token in game.token" ><input class="form-control"  ng-model="token.name"></td> -->
                       <td style="padding:8px" ><input class="form-control" ng-model="game.question.text"></td>
                       <td style="padding:8px" ><input class="form-control"  ng-model="game.token"></td>
                       <td style="padding-top:8px" >
-
                         <div class="btn-group" role="group">
+                          <!-- Buttons to Add Input Information as Database/ Update is shown only in editing mode -->
                           <button class="btn btn-success" ng-hide="edit" ng-click="addScenario()">Add</button>
                           <button class="btn btn-success" ng-show="edit" ng-click="updateScenario()">Update</button>
                         </div>
-
-
                       </td>
                     </tr>
                   </thead> <!-- END Table Head Tokens Input  -->
                   <tbody ng-repeat="game in set">
+                    <!-- Output Data Information Here Theme, Question and Tokens -->
                     <tr>
-                    <td>{{game.theme}}</td>
-                    <td ng-repeat="question in game.question"> {{question.text}}
-                    </td>
-                    <td><button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button></td>
+                      <td>{{game.theme}}</td>
+                      <td ng-repeat="question in game.question"> {{question.text}} </td>
+                      <!-- Delete and Edit button for Each Game Set -->
+                      <td><button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button></td>
                       <td><button class="btn btn-danger" ng-click="editScenario(game._id)">Edit</button></td>
-                    <td><button class="btn btn-success" >Show more</button></td>
-
-                  </tr>
+                      <!-- Show button for editing Tokens NOT FUNCTIONAL-->
+                      <td><button class="btn btn-success" >Show more</button></td>
+                    </tr>
                     <tr ng-repeat="token in game.token">
-                      <!-- <td>{{token.name}}</td> -->
-                      <!-- <td>{{token.token[0].name}}</td> -->
-
+                      <!-- Printing out Token information -->
                       <td>{{token.name}}</td>
                       <td>{{game.theme}}</td>
                       <td>
                         <div class="btn-group" role="group">
-                          <button class="btn btn-danger" ng-click="deleteScenario(game._id)">Delete</button>
-                          <!-- <button class="btn btn-danger" ng-click="updateToken()">Delete</button> -->
+                          <!-- Buttons to Delete/Edit Token NOT FUNCTIONAL -->
+                          <button class="btn btn-danger" ng-click="deleteToken(game._id)">Delete</button>
                           <button class="btn btn-default" ng-click="editToken(token._id)">Edit</button>
                         </div>
                       </td>
