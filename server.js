@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-//var Token = require('./models/token.js');
-//var Question = require('./models/question.js');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
